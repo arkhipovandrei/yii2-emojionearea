@@ -11,30 +11,17 @@ class EmojiOneAsset extends \yii\web\AssetBundle
     /**
      * @inheritdoc
      */
-    public $sourcePath = '@vendor/emojione/emojione';
+    public $sourcePath = '@vendor/mervick/emojionearea/';
 
-
+    //vendor/mervick/emojionearea/dist/emojionearea.min.js
     /**
      * @inheritdoc
      */
     public function init()
     {
-        $this->js = [!YII_DEBUG ? 'lib/js/emojione.min.js' : 'lib/js/emojione.js'];
-        $this->css = [!YII_DEBUG ? 'assets/css/emojione.min.css' : 'assets/css/emojione.css'];
+        $this->js = [!YII_DEBUG ? 'dist/emojionearea.min.js' : 'dist/emojionearea.js'];
+        $this->css = [!YII_DEBUG ? 'dist/emojionearea.min.css' : 'dist/emojionearea.css'];
 
         parent::init();
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function publish($am)
-    {
-        parent::publish($am);
-
-        $js = <<<JS
-    emojione.imagePathPNG = '{$this->baseUrl}/assets/png/';
-JS;
-        \Yii::$app->view->registerJs($js);
     }
 }
